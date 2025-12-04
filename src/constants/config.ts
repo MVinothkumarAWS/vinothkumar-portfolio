@@ -42,13 +42,13 @@ export const config: TConfig = {
   html: {
     title: "Vinothkumar Mani — AWS Solutions Architect",
     fullName: "Vinothkumar Mani",
-    email: "vinoaws121287@gmail.com",
+    email: "vinoaws1212@gmail.com",
   },
   hero: {
     name: "VINOTHKUMAR MANI",
     p: [
       "AWS Solutions Architect • Cloud & DevOps • Full-stack",
-      "Chennai, India • vinoaws121287@gmail.com",
+      "Chennai, India • vinoaws1212@gmail.com",
     ],
   },
   contact: {

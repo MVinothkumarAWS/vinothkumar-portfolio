@@ -7,15 +7,29 @@ import { logo, menu, close } from "../../assets";
 import { config } from "../../constants/config";
 
 const Navbar = () => {
-  const [active, setActive] = useState<string | null>();
+  const [active, setActive] = useState<string>("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
+      
       if (scrollTop > 100) {
         setScrolled(true);
+        
+        // Navbar highlighting
+        const sections = document.querySelectorAll("section[id]");
+        sections.forEach((current) => {
+          const sectionId = current.getAttribute("id");
+          const sectionHeight = (current as HTMLElement).offsetHeight;
+          const sectionTop =
+            current.getBoundingClientRect().top - sectionHeight * 0.2;
+
+          if (sectionTop < 0 && sectionTop + sectionHeight > 0) {
+            setActive(sectionId || "");
+          }
+        });
       } else {
         setScrolled(false);
         setActive("");
@@ -24,27 +38,8 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    const navbarHighlighter = () => {
-      const sections = document.querySelectorAll("section[id]");
-
-      sections.forEach((current) => {
-        const sectionId = current.getAttribute("id");
-        // @ts-ignore
-        const sectionHeight = current.offsetHeight;
-        const sectionTop =
-          current.getBoundingClientRect().top - sectionHeight * 0.2;
-
-        if (sectionTop < 0 && sectionTop + sectionHeight > 0) {
-          setActive(sectionId);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", navbarHighlighter);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", navbarHighlighter);
     };
   }, []);
 
@@ -94,12 +89,18 @@ const Navbar = () => {
         </ul>
 
         <div className="flex flex-1 items-center justify-end sm:hidden">
-          <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="h-[28px] w-[28px] object-contain"
+          <button
             onClick={() => setToggle(!toggle)}
-          />
+            aria-label={toggle ? "Close menu" : "Open menu"}
+            aria-expanded={toggle}
+            className="h-[28px] w-[28px] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary rounded"
+          >
+            <img
+              src={toggle ? close : menu}
+              alt=""
+              className="h-full w-full object-contain"
+            />
+          </button>
 
           <div
             className={`${

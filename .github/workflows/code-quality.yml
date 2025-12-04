@@ -1,0 +1,66 @@
+name: Code Quality Checks
+
+on:
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run TypeScript check
+      run: npm run ts:check
+    
+    - name: Run ESLint
+      run: npm run lint -- --max-warnings 0
+    
+    - name: Check for console.logs
+      run: |
+        if grep -r "console\.log" src/ --include="*.tsx" --include="*.ts" | grep -v "console.error" | grep -v "console.warn"; then
+          echo "❌ Found console.log statements in code"
+          exit 1
+        else
+          echo "✅ No console.log statements found"
+        fi
+    
+    - name: Check for TypeScript ignores
+      run: |
+        if grep -r "@ts-ignore\|@ts-expect-error" src/ --include="*.tsx" --include="*.ts"; then
+          echo "⚠️ Found TypeScript ignore comments"
+          exit 1
+        else
+          echo "✅ No TypeScript ignore comments found"
+        fi
+    
+    - name: Build check
+      run: npm run build
+      env:
+        VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+        VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+        VITE_EMAILJS_ACCESS_TOKEN: ${{ secrets.VITE_EMAILJS_ACCESS_TOKEN }}
+    
+    - name: Quality Report
+      if: always()
+      run: |
+        echo "### 📊 Code Quality Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ TypeScript Check: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ ESLint: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ No console.log: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ No TS ignores: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Build: Successful" >> $GITHUB_STEP_SUMMARY

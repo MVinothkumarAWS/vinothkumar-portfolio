@@ -1,0 +1,64 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run TypeScript check
+      run: npm run ts:check
+    
+    - name: Run ESLint
+      run: npm run lint
+    
+    - name: Build project
+      run: npm run build
+      env:
+        VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+        VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+        VITE_EMAILJS_ACCESS_TOKEN: ${{ secrets.VITE_EMAILJS_ACCESS_TOKEN }}
+    
+    # Deploy to Vercel
+    - name: Deploy to Vercel
+      if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+        working-directory: ./
+    
+    # Alternative: Deploy to Netlify (uncomment if using Netlify instead)
+    # - name: Deploy to Netlify
+    #   uses: netlify/actions/cli@master
+    #   with:
+    #     args: deploy --prod --dir=dist
+    #   env:
+    #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    
+    - name: Deployment Summary
+      run: |
+        echo "### 🚀 Deployment Successful!" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Deployed at:** $(date)" >> $GITHUB_STEP_SUMMARY

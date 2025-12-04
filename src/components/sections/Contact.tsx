@@ -1,12 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-import { EarthCanvas } from "../canvas";
 import { SectionWrapper } from "../../hoc";
 import { slideIn } from "../../utils/motion";
 import { config } from "../../constants/config";
 import { Header } from "../atoms/Header";
+import { ErrorBoundary } from "../../components";
+
+const EarthCanvas = lazy(() => import("../canvas/Earth"));
 
 const INITIAL_STATE = Object.fromEntries(
   Object.keys(config.contact.form).map((input) => [input, ""])
@@ -19,7 +21,7 @@ const emailjsConfig = {
 };
 
 const Contact = () => {
-  const formRef = useRef<React.LegacyRef<HTMLFormElement> | undefined>();
+  const formRef = useRef<HTMLFormElement>(null);
   const [form, setForm] = useState(INITIAL_STATE);
   const [loading, setLoading] = useState(false);
 
@@ -34,6 +36,31 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement> | undefined) => {
     if (e === undefined) return;
     e.preventDefault();
+
+    // Validate form fields
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Validate email format
+    if (!/\S+@\S+\.\S+/.test(form.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    // Validate environment variables
+    if (
+      !emailjsConfig.serviceId ||
+      !emailjsConfig.templateId ||
+      !emailjsConfig.accessToken
+    ) {
+      alert(
+        `Email service is not configured. Please contact me directly at ${config.html.email}`
+      );
+      return;
+    }
+
     setLoading(true);
 
     emailjs
@@ -59,8 +86,13 @@ const Contact = () => {
         (error) => {
           setLoading(false);
 
-          console.log(error);
-          alert("Something went wrong.");
+          // Only log errors in development
+          if (import.meta.env.DEV) {
+            console.error("EmailJS Error:", error);
+          }
+          alert(
+            `Failed to send message. Please try again or contact me directly at ${config.html.email}`
+          );
         }
       );
   };
@@ -76,7 +108,6 @@ const Contact = () => {
         <Header useMotion={false} {...config.contact} />
 
         <form
-          // @ts-expect-error
           ref={formRef}
           onSubmit={handleSubmit}
           className="mt-12 flex flex-col gap-8"
@@ -103,7 +134,10 @@ const Contact = () => {
           })}
           <button
             type="submit"
-            className="bg-tertiary shadow-primary w-fit rounded-xl px-8 py-3 font-bold text-white shadow-md outline-none"
+            disabled={loading}
+            className={`bg-tertiary shadow-primary w-fit rounded-xl px-8 py-3 font-bold text-white shadow-md outline-none transition-opacity ${
+              loading ? "cursor-not-allowed opacity-50" : ""
+            }`}
           >
             {loading ? "Sending..." : "Send"}
           </button>
@@ -114,7 +148,17 @@ const Contact = () => {
         variants={slideIn("right", "tween", 0.2, 1)}
         className="h-[350px] md:h-[550px] xl:h-auto xl:flex-1"
       >
-        <EarthCanvas />
+        <ErrorBoundary
+          fallback={
+            <div className="flex h-full items-center justify-center bg-tertiary rounded-2xl">
+              <p className="text-secondary">3D Earth visualization unavailable</p>
+            </div>
+          }
+        >
+          <Suspense fallback={null}>
+            <EarthCanvas />
+          </Suspense>
+        </ErrorBoundary>
       </motion.div>
     </div>
   );

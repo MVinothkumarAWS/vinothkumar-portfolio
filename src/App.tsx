@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
+import { useEffect, lazy, Suspense } from "react";
 
 import {
   About,
@@ -9,10 +10,12 @@ import {
   Navbar,
   Tech,
   Works,
-  StarsCanvas,
+  ErrorBoundary,
 } from "./components";
-import { useEffect } from "react";
 import { config } from "./constants/config";
+
+// Lazy load heavy 3D canvas components
+const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
 
 const App = () => {
   useEffect(() => {
@@ -35,7 +38,15 @@ const App = () => {
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          <StarsCanvas />
+          <ErrorBoundary
+            fallback={
+              <div className="absolute inset-0 z-[-1] h-auto w-full bg-primary" />
+            }
+          >
+            <Suspense fallback={null}>
+              <StarsCanvas />
+            </Suspense>
+          </ErrorBoundary>
         </div>
       </div>
     </BrowserRouter>

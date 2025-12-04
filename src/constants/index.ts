@@ -65,6 +65,10 @@ const services: TService[] = [
     title: "AI & ML Integration",
     icon: creator,
   },
+  {
+    title: "C# & ASP.NET Developer",
+    icon: web,
+  },
 ];
 
 const technologies: TTechnology[] = [
@@ -93,6 +97,14 @@ const technologies: TTechnology[] = [
     icon: nodejs,
   },
   {
+    name: "C#",
+    icon: javascript,
+  },
+  {
+    name: "ASP.NET",
+    icon: reactjs,
+  },
+  {
     name: "Redux Toolkit",
     icon: redux,
   },
@@ -113,16 +125,8 @@ const technologies: TTechnology[] = [
     icon: git,
   },
   {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
+    name: "Figma",
     icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
   },
 ];
 
@@ -210,9 +214,9 @@ const testimonials: TTestimonial[] = [
   {
     testimonial:
       "Vinoth's AWS cloud architecture expertise transformed our infrastructure. His solutions are scalable, secure, and deliver measurable cost savings. Exceptional problem-solver!",
-    name: "MasterCard Inc.",
-    designation: "Enterprise Client",
-    company: "Fortune 500 Financial Services",
+    name: "Sunware Technologies",
+    designation: "Cloud Solutions Partner",
+    company: "Enterprise Technology Solutions",
     image: "https://randomuser.me/api/portraits/women/4.jpg",
   },
   {
@@ -226,9 +230,9 @@ const testimonials: TTestimonial[] = [
   {
     testimonial:
       "Vinoth's automation workflows and Six Sigma optimization improved our processes by 50%. His technical expertise and attention to detail are outstanding.",
-    name: "Sempra Energy",
-    designation: "Enterprise Client",
-    company: "Energy Solutions",
+    name: "Straive",
+    designation: "Digital Publishing Solutions",
+    company: "Content Technology Leader",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
   },
 ];
@@ -253,7 +257,7 @@ const projects: TProject[] = [
       },
     ],
     image: carrent,
-    sourceCodeLink: "https://github.com/ladunjexa",
+    sourceCodeLink: "https://github.com/vinoaws121287/tracemaster",
   },
   {
     name: "School 360 E-Learning Platform",
@@ -274,7 +278,7 @@ const projects: TProject[] = [
       },
     ],
     image: jobit,
-    sourceCodeLink: "https://github.com/ladunjexa",
+    sourceCodeLink: "https://github.com/vinoaws121287/school360",
   },
   {
     name: "Enterprise Data Analytics Solution",
@@ -295,7 +299,7 @@ const projects: TProject[] = [
       },
     ],
     image: tripguide,
-    sourceCodeLink: "https://github.com/ladunjexa",
+    sourceCodeLink: "https://github.com/vinoaws121287/analytics-solution",
   },
 ];
 
