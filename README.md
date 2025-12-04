@@ -22,7 +22,7 @@ Built with modern web technologies including React 18, TypeScript, Three.js, and
 
 ## 🌐 Live Demo
 
-**Portfolio URL:** [vinothkumar-portfolio.vercel.app](https://vinothkumar-portfolio.vercel.app) *(Deployment in progress)*
+**Portfolio URL:** [vinothkumarmaniportfolio.vercel.app](https://vinothkumarmaniportfolio.vercel.app) ✅ **LIVE**
 
 ---
 
@@ -230,7 +230,7 @@ See [LICENSE](LICENSE) file for details.
 - **Email**: vinoaws1212@gmail.com
 - **Location**: Chennai, India
 - **GitHub**: [@MVinothkumarAWS](https://github.com/MVinothkumarAWS)
-- **Portfolio**: [vinothkumar-portfolio.vercel.app](https://vinothkumar-portfolio.vercel.app)
+- **Portfolio**: [vinothkumarmaniportfolio.vercel.app](https://vinothkumarmaniportfolio.vercel.app)
 
 ---
 
