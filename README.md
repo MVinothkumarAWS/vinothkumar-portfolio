@@ -1,270 +1,254 @@
-# Vinothkumar Mani - Portfolio
+# Vinothkumar Mani - Professional Portfolio
 
-[![CI](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/actions/workflows/ci.yml)
-[![Deploy](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/actions/workflows/deploy.yml)
-[![License](https://img.shields.io/github/license/MVinothkumarAWS/vinothkumar-portfolio)](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/blob/master/LICENSE)
+> AWS Solutions Architect | Full-Stack Developer | DevOps Engineer
 
-![Portfolio Preview](.github/README_ASSETS/3d-portfolio.png)
+[![CI/CD Pipeline](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/MVinothkumarAWS/vinothkumar-portfolio/blob/master/LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)](https://www.typescriptlang.org/)
 
-## 👨‍💻 About Me
+---
 
-**AWS Solutions Architect** with 3+ years of hands-on AWS expertise and 6+ years of total IT experience in cloud architecture, DevOps, and full-stack development. Skilled in AWS, .NET, C#, and MERN stack, specializing in microservices design, CI/CD automation (Jenkins, Terraform), and cloud monitoring (Prometheus, Grafana, CloudWatch).
+## 👨‍💻 About
+
+Professional portfolio website showcasing my expertise in:
+- **AWS Solutions Architecture** - 3+ years hands-on experience
+- **Full-Stack Development** - React, Node.js, C#, ASP.NET, MERN Stack
+- **DevOps & CI/CD** - Jenkins, Terraform, Docker, Kubernetes
+- **Cloud Architecture** - Microservices, Serverless, Infrastructure as Code
+
+Built with modern web technologies including React 18, TypeScript, Three.js, and Tailwind CSS.
+
+---
 
 ## 🌐 Live Demo
 
-[View Live Portfolio](https://vinothkumar-portfolio.vercel.app) *(Coming Soon)*
+**Portfolio URL:** [vinothkumar-portfolio.vercel.app](https://vinothkumar-portfolio.vercel.app) *(Deployment in progress)*
+
+---
 
 ## ✨ Features
 
-- **3D Graphics**: Interactive Three.js 3D models and animations
-- **Responsive Design**: Fully responsive across all devices
-- **Modern Stack**: React 18, TypeScript, Vite, Tailwind CSS
-- **Smooth Animations**: Framer Motion for fluid transitions
-- **Contact Form**: Integrated EmailJS for direct communication
-- **CI/CD Pipeline**: Automated testing and deployment with GitHub Actions
-- **Type-Safe**: 100% TypeScript with strict type checking
-- **Optimized Performance**: Code splitting and lazy loading
+- **🎨 3D Interactive Design** - Three.js powered 3D models and animations
+- **⚡ High Performance** - Code splitting, lazy loading, optimized bundle size
+- **📱 Fully Responsive** - Works seamlessly on all devices
+- **♿ Accessible** - WCAG compliant with keyboard navigation
+- **📧 Contact Form** - Integrated email service with validation
+- **🔒 Type-Safe** - 100% TypeScript coverage
+- **🚀 CI/CD Ready** - Automated testing and deployment
+- **🎭 Smooth Animations** - Framer Motion powered transitions
 
-## 🛠️ Technologies Used
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
-- **React 18** - UI library
-- **TypeScript** - Type-safe JavaScript
-- **Three.js** - 3D graphics
-- **@react-three/fiber** - React renderer for Three.js
-- **@react-three/drei** - Useful helpers for Three.js
-- **Framer Motion** - Animation library
-- **Tailwind CSS** - Utility-first CSS framework
+- React 18 + TypeScript
+- Three.js + React Three Fiber
+- Tailwind CSS
+- Framer Motion
+- Vite
 
 ### Backend & Services
-- **EmailJS** - Email service for contact form
-- **Vercel** - Hosting and deployment
+- EmailJS
+- Vercel Hosting
 
-### Development
-- **Vite** - Build tool and dev server
-- **ESLint** - Code linting
-- **Prettier** - Code formatting
-- **GitHub Actions** - CI/CD pipelines
+### Development & DevOps
+- GitHub Actions (CI/CD)
+- ESLint + Prettier
+- TypeScript Strict Mode
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18.x or higher
+- Node.js 18+ 
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
 ```bash
+# Clone repository
 git clone https://github.com/MVinothkumarAWS/vinothkumar-portfolio.git
 cd vinothkumar-portfolio
-```
 
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-```
 
-3. Create `.env` file (copy from `.env.example`):
-```bash
+# Create environment file
 cp .env.example .env
-```
 
-4. Add your EmailJS credentials to `.env`:
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_ACCESS_TOKEN=your_access_token
-```
+# Add your EmailJS credentials to .env file
+# VITE_EMAILJS_SERVICE_ID=your_service_id
+# VITE_EMAILJS_TEMPLATE_ID=your_template_id
+# VITE_EMAILJS_ACCESS_TOKEN=your_access_token
 
-5. Start the development server:
-```bash
+# Start development server
 npm run dev
 ```
 
-6. Open [http://localhost:5173](http://localhost:5173) in your browser
+Open [http://localhost:5173](http://localhost:5173) to view in browser.
 
-## 📦 Build for Production
+---
 
-```bash
-npm run build
-```
-
-The build output will be in the `dist/` folder.
-
-## 🧪 Testing & Quality
+## 📦 Available Scripts
 
 ```bash
-# TypeScript type checking
-npm run ts:check
-
-# ESLint
-npm run lint
-
-# Build verification
-npm run build
+npm run dev        # Start development server
+npm run build      # Build for production
+npm run preview    # Preview production build
+npm run lint       # Run ESLint
+npm run ts:check   # TypeScript type checking
 ```
 
-## 🔧 Configuration
-
-### Environment Variables
-
-Required environment variables for EmailJS integration:
-
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_ACCESS_TOKEN=your_access_token
-```
-
-Get your credentials from [EmailJS](https://www.emailjs.com/)
-
-### Personal Information
-
-Update your personal information in `src/constants/config.ts`:
-- Name, title, contact information
-- About section content
-- Social media links
-
-Update your work experience, projects, and testimonials in `src/constants/index.ts`
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Go to [Vercel](https://vercel.com/signup)
-2. Import your GitHub repository
-3. Add environment variables
-4. Deploy!
-
-See `.github/QUICK_START.md` for detailed deployment instructions.
-
-### CI/CD Pipeline
-
-This project includes GitHub Actions workflows for:
-- **CI**: Build and test on every push
-- **Deploy**: Automatic deployment to production
-- **Code Quality**: Quality checks on pull requests
-- **Dependencies**: Weekly dependency updates
-
-See `.github/SETUP_GUIDE.md` for CI/CD setup instructions.
+---
 
 ## 📂 Project Structure
 
 ```
 vinothkumar-portfolio/
-├── .github/              # GitHub Actions workflows and documentation
-├── public/               # Static assets
-│   ├── desktop_pc/      # 3D model assets
-│   └── planet/          # 3D model assets
+├── .github/              # GitHub Actions workflows
+├── public/               # Static assets & 3D models
 ├── src/
-│   ├── assets/          # Images and icons
+│   ├── assets/          # Images, icons, media
 │   ├── components/      # React components
-│   │   ├── atoms/       # Atomic components
-│   │   ├── canvas/      # 3D canvas components
+│   │   ├── canvas/      # 3D Three.js components
 │   │   ├── layout/      # Layout components
 │   │   └── sections/    # Page sections
-│   ├── constants/       # Configuration and data
-│   ├── hoc/             # Higher-order components
-│   ├── types/           # TypeScript types
-│   ├── utils/           # Utility functions
-│   ├── App.tsx          # Main app component
-│   └── main.tsx         # Entry point
+│   ├── constants/       # Configuration & data
+│   ├── types/           # TypeScript definitions
+│   ├── utils/           # Helper functions
+│   └── App.tsx          # Main application
 ├── .env.example         # Environment variables template
-└── package.json         # Dependencies and scripts
+└── package.json
 ```
 
-## 📊 Features & Sections
+---
 
-### Hero Section
-- 3D animated computer model
-- Animated text introduction
-- Scroll indicator
+## 🎯 Portfolio Sections
 
-### About Section
-- Professional summary
-- Service cards:
-  - Cloud Solutions Architect
-  - Full Stack Developer
-  - DevOps / CI-CD
-  - AI & ML Integration
-  - C# & ASP.NET Developer
+### 1. Hero Section
+- Interactive 3D computer model
+- Professional introduction
+- Smooth scroll animations
 
-### Experience Section
-- Timeline of work experience
-- Key achievements and responsibilities
+### 2. About Section
+Professional expertise in:
+- Cloud Solutions Architecture
+- Full Stack Development
+- DevOps / CI-CD
+- AI & ML Integration
+- C# & ASP.NET Development
 
-### Tech Stack Section
-- 3D rotating technology balls
-- Technologies: HTML5, CSS3, JavaScript, TypeScript, React, Node.js, C#, ASP.NET, Redux, Tailwind CSS, MongoDB, Docker, Git, Figma
+### 3. Experience Timeline
+Work experience at:
+- Sunware Technologies
+- Straive
+- Westayclose Pvt Ltd
 
-### Projects Section
-- Featured projects with descriptions
-- Technologies used
-- Links to live demos and source code
+### 4. Tech Stack Showcase
+Technologies: HTML5, CSS3, JavaScript, TypeScript, React, Node.js, C#, ASP.NET, Redux, Tailwind CSS, MongoDB, Docker, Git, Figma
 
-### Testimonials Section
-- Client and company testimonials
-- Professional recommendations
+### 5. Projects Portfolio
+Featured projects:
+- TraceMaster - Network Diagnostic Tool
+- School 360 E-Learning Platform
+- Enterprise Data Analytics Solution
 
-### Contact Section
-- Email contact form with validation
-- 3D Earth model
-- Direct email integration
+### 6. Testimonials
+Client feedback and recommendations
 
-## 🎯 Key Improvements
+### 7. Contact Form
+Email contact with validation and 3D Earth visualization
 
-This portfolio includes several professional improvements:
+---
 
-✅ **Code Quality**
-- 100% TypeScript coverage
-- Zero ESLint warnings
-- Removed all `@ts-ignore` comments
-- Proper error handling
+## 🔧 Environment Variables
 
-✅ **Performance**
-- Code splitting and lazy loading
-- Bundle size reduced by 71KB
-- Optimized 3D rendering
+Create a `.env` file with the following:
 
-✅ **Accessibility**
-- Keyboard navigation support
-- ARIA labels and attributes
-- Screen reader friendly
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_ACCESS_TOKEN=your_access_token
+```
 
-✅ **User Experience**
-- Form validation
-- Loading states
-- Error boundaries
-- Mobile-optimized
+Get credentials from [EmailJS](https://www.emailjs.com/)
 
-✅ **DevOps**
-- CI/CD pipelines
-- Automated testing
-- Automated deployment
-- Code quality checks
+---
 
-## 📝 License
+## 🚀 Deployment
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Deploy to Vercel
+
+1. Push code to GitHub
+2. Visit [vercel.com](https://vercel.com)
+3. Import GitHub repository
+4. Add environment variables
+5. Deploy!
+
+**Automatic deployments** on every push to master branch.
+
+See [`.github/QUICK_START.md`](.github/QUICK_START.md) for detailed setup.
+
+---
+
+## 🧪 CI/CD Pipeline
+
+Automated workflows include:
+- ✅ Build & Test on every push
+- ✅ Code quality checks on PRs
+- ✅ Automated deployment to production
+- ✅ Weekly dependency updates
+
+See [`.github/SETUP_GUIDE.md`](.github/SETUP_GUIDE.md) for CI/CD documentation.
+
+---
+
+## 📊 Code Quality
+
+- **TypeScript**: 100% type coverage
+- **ESLint**: Zero warnings
+- **Build**: Production optimized
+- **Bundle Size**: Optimized with code splitting
+- **Accessibility**: WCAG 2.1 compliant
+
+---
+
+## 📄 License
+
+MIT License - Copyright (c) 2025 Vinothkumar Mani
+
+See [LICENSE](LICENSE) file for details.
+
+---
 
 ## 📞 Contact
 
 **Vinothkumar Mani**
-- Email: vinoaws1212@gmail.com
-- Location: Chennai, India
-- GitHub: [@MVinothkumarAWS](https://github.com/MVinothkumarAWS)
 
-## 🙏 Acknowledgments
-
-- Three.js for amazing 3D graphics
-- React Three Fiber for React integration
-- EmailJS for email service
-- Vercel for hosting
-- All open-source contributors
+- **Email**: vinoaws1212@gmail.com
+- **Location**: Chennai, India
+- **GitHub**: [@MVinothkumarAWS](https://github.com/MVinothkumarAWS)
+- **Portfolio**: [vinothkumar-portfolio.vercel.app](https://vinothkumar-portfolio.vercel.app)
 
 ---
 
-**Made with ❤️ by Vinothkumar Mani**
+## 🙏 Acknowledgments
 
-*Portfolio showcasing AWS Solutions Architecture, Full-Stack Development, and DevOps expertise*
+- Three.js community for amazing 3D graphics library
+- React and Vite teams for excellent developer experience
+- EmailJS for email service integration
+- Vercel for seamless hosting and deployment
+
+---
+
+<div align="center">
+
+**Built with ❤️ by Vinothkumar Mani**
+
+*Showcasing AWS Solutions Architecture, Full-Stack Development, and DevOps expertise*
+
+⭐ Star this repo if you find it helpful!
+
+</div>
